@@ -96,59 +96,116 @@
 
 
 
-void delchar( char *str, char c )
+//void delchar( char *str, char c )
+//{
+//    int i=0,j=0;
+//    while(str[i]!='\0')
+//	{
+//        if(str[i]!=c)
+//		{
+//            str[j]=str[i];
+//            j++;
+//        }
+//        i++;        //等于c就跳过了，直接i++继续 
+//    }
+//    str[j]='\0';
+//}
+
+
+
+
+//bool palindrome( char *s )
+//{
+//    int len = strlen(s);
+//    for(int i = 0;i <=len/2;i++)
+//        if(s[i] != s[len-i-1]) return false;
+//    return true;
+//}
+
+
+
+
+//void StringCount( char *s )
+//{
+//    int digit=0,A_letter=0,a_letter=0,blank=0,other=0;
+//    int i=0;
+//    for(i=0;s[i]!='\0';i++)
+//	{
+//        if(s[i]>='A'&&s[i]<='Z')
+//            A_letter++;
+//        else if(s[i]>='a'&&s[i]<='z')
+//            a_letter++;
+//        else if(s[i]>='0'&&s[i]<='9')
+//            digit++;
+//        else if(s[i]==' ')
+//            blank++;
+//        else other++;
+//    }
+//    printf("%d %d %d %d %d",A_letter,a_letter,blank,digit,other);
+//}
+
+
+
+//#include<stdio.h>
+//#include<string.h>
+//#define N 5
+//#define M 80
+//int main()
+//{
+//    char str[N][M]={'0'};
+//    int i,j;
+//    for(i=0;i<N;i++)scanf("%s",str[i]);
+//    char temp[M];
+//    for(i=0;i<N;i++)
+//	{
+//        for(j=i+1;j<N;j++)
+//		{
+//            if(strcmp(str[i],str[j]) >= 0)
+//			{
+//                strcpy(temp, str[i]);
+//                strcpy(str[i], str[j]);
+//                strcpy(str[j], temp);
+//            }
+//        }
+//    }
+//    printf("After sorted:\n");
+//    for(int i=0;i<N;i++)printf("%s\n",str[i]);
+//    return 0;
+//}
+
+
+
+#include <stdio.h>
+#include <malloc.h>
+int main()
 {
-    int i=0,j=0;
-    while(str[i]!='\0')
+	int n;
+	int i;
+	double item = 0;
+	double ave = 0 ;
+	double sum = 0 ;
+	double max = 0 ; 
+	double min = 151 ;
+	int *arr;
+	scanf("%d",&n);
+	arr = (int *)malloc(sizeof(int)*n);  //动态数组开辟空间
+	for(i = 0 ; i < n; i++)
 	{
-        if(str[i]!=c)
+		scanf("%lf",&item);
+		if(max<item)
 		{
-            str[j]=str[i];
-            j++;
-        }
-        i++;        //等于c就跳过了，直接i++继续 
-    }
-    str[j]='\0';
-}
-
-
-
-
-bool palindrome( char *s )
-{
-    int len = strlen(s);
-    for(int i = 0;i <=len/2;i++)
-        if(s[i] != s[len-i-1]) return false;
-    return true;
-}
-
-
-
-
-void StringCount( char *s )
-{
-    int digit=0,A_letter=0,a_letter=0,blank=0,other=0;
-    int i=0;
-    for(i=0;s[i]!='\0';i++)
-	{
-        if(s[i]>='A'&&s[i]<='Z')
-            A_letter++;
-        else if(s[i]>='a'&&s[i]<='z')
-            a_letter++;
-        else if(s[i]>='0'&&s[i]<='9')
-            digit++;
-        else if(s[i]==' ')
-            blank++;
-        else other++;
-    }
-    printf("%d %d %d %d %d",A_letter,a_letter,blank,digit,other);
-}
-
-
-
-
-
-
+			max = item;
+		}
+		if(min > item)
+		{
+			min = item;
+		}
+		sum += item;
+	}
+	ave = sum/n;
+	printf("average = %.2f\nmax = %.2f\nmin = %.2f",ave,max,min);
+	return 0;	
+} 
 
 
 

@@ -262,7 +262,345 @@
 
 
 
+//homework3_E
+
+//#include<stdio.h>
+//struct node
+//{
+//	char name[10];
+//	int a,b,c;
+//	int score;
+//	int id;
+// } student[1005];
+//
+//int main()
+//{
+//	int n;
+//	scanf("%d",&n);
+//	for(int i=0;i<n;i++)
+//	{
+//		getchar();
+//		scanf("%s %d %d %d",student[i].name,&student[i].a,&student[i].b,&student[i].c);
+//		student[i].score=student[i].a+student[i].b+student[i].c;
+//		student[i].id=i;
+//	}
+//	int maxn=student[0].score;
+//	int maxnIndex = 0; 
+//	for(int j=0;j<n;j++)
+//	{
+//		if(maxn<student[j].score)
+//		{
+//			maxn=student[j].score;
+//			maxnIndex=j;                 //注意这里的Index 
+//		}
+//	}
+//	printf("%s %d %d %d",student[maxnIndex].name,student[maxnIndex].a,student[maxnIndex].b,student[maxnIndex].c);
+//	return 0;
+//}
+//
+//
+//
+//
+//#include<bits/stdc++.h>
+//using namespace std;
+//struct node
+//{
+//	string s;
+//	int a,b,c;
+//	int sum,id;
+//}f[10005];
+//
+//bool cmp(node x,node y)
+//{ 	 
+//	return (x.sum>y.sum)||(x.sum==y.sum&&x.id<y.id);
+//}
+//
+//int main()
+//{	 int n;
+//	 cin>>n;
+//	 for(int i=1;i<=n;i++)
+//	 {	cin>>f[i].s>>f[i].a>>f[i].b>>f[i].c;
+//	    f[i].sum=f[i].a+f[i].b+f[i].c;
+//		f[i].id=i;
+//	 }
+//	 sort(f+1,f+n+1,cmp);
+//	 cout<<f[1].s<<" "<<f[1].a<<" "<<f[1].b<<" "<<f[1].c<<endl;
+//	 return 0;
+//}
+
+
+
+
 //homework3_F
+
+//#include<stdio.h>
+//#include<math.h>
+////由题意可知，n为两个质数之积，也就是说只要找到一个数能够被n整除，这个数一定是质数
+//int check(int x)
+//{
+//	if(x==1) return 0;                            //这个算法 超时了 
+//	for(int i=2;i*i<=x;i++)
+//	{
+//		//if(x%i!=0) return 1;  //比如，4%3！=0，但4不是质数 
+//		if(x%i==0) return 0;
+//	}
+//	return 1;
+// } 
+//int main()
+//{
+//	int n;
+//	
+//	scanf("%d",&n);
+//	for(int i=n;i>=sqrt(n);i--)
+//	{
+////		if(check(i))
+////		{
+////			if(check(n/i)&&n*1.0/i==(int)n*1.0/i)
+////			{
+////				printf("%d",i);
+////				break;
+////			}
+//		if(n%i==0)
+//		{
+//			if(check(i))
+//			{
+//				printf("%d",i);
+//				break;
+//			}
+//			else continue;
+//		 } 
+//	}
+//	
+//	return 0;
+//}
+//
+//#include<bits/stdc++.h>
+//int main(){
+//    int a;
+//	std::cin>>a;
+//	for(int i = 2;i<=a/i;i++)
+//		if(a%i==0)
+//		{std::cout<<a/i;
+//		return 0;
+//		}
+//}
+//
+//
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <math.h>   
+////由题意可知，n为两个质数之积，也就是说只要找到一个数能够被n整除，这个数一定是质数！！！
+////2为最小的质数，直接从2开始找，这里通过平方sqrt减小运算次数，找到质数，然后与n相除，
+////找到另一个质数，比大小即可，选出最大那个即可。
+//
+//int main()
+//{
+//    int a,i,j,max;
+//    scanf("%d",&a);
+//    for(i=2;i<sqrt(a);i++)
+//	{
+//        if(a%i==0)
+//		{
+//            j=a/i;
+//            break;
+//        }
+//    }
+//    if(i>j)
+//	{
+//        max=i;
+//    }
+//    else
+//	{
+//        max=j;
+//    }
+//    printf("%d",max);
+//    return 0;
+//}
+
+
+
+
+
+
+
+
+//homework3_G
+
+
+//#include<stdio.h>
+// bool check(int num)
+// {
+// 	if(num==1||num==0)
+// 	{
+// 		return false;
+//	 }
+// 	for(int i=2;i*i<=num;i++)          //注意要取等号，否则2*2=4，4为质数但也是true； 
+// 	{
+// 		if(num%i==0)
+// 		{
+// 			return false;
+//		 }
+//	 }
+//	 return true;
+// }
+//int main()
+//{
+//	int n;
+//	scanf("%d",&n);
+//	for(int i=4;i<=n;i+=2)
+//	{
+//		for(int j=2;j<=n/2;j++)
+//		{
+//			if(check(j))
+//			{
+//				if(check(i-j)&&i>=j) 
+//				{
+//					printf("%d=%d+%d\n",i,j,i-j);//这里就不好进行10=3+7和 10=5+5了，直接用下面的函数来就快捷很多，因为一旦找到一个就可以返回值结束函数 
+//				}
+//			}
+//		}
+//	}
+//	
+//	return 0;
+// } 
+//
+//
+//
+//#include<stdio.h>
+//#include<math.h>
+//int zhishu(int n)//判断是否为质数，是返回0不是返回1
+//{
+//    int i,b=0;
+//    for(i=2;i<=sqrt(n);i++)
+//     if(n%i==0)
+//     {
+//         b++;
+//         break;
+//     }
+//     return b;
+//}
+//int guess(int n)//对质数进行猜想判断,不成立返回0.
+//{
+//    int i;
+//    for(i=2;i<=n/2;i++)
+//      if(zhishu(i)==0)
+//      {
+//          if(zhishu(n-i)==0) return i;
+//      }
+//      return 0;
+//}
+//main()
+//{
+//	int N,i;
+//	scanf("%d",&N);
+//	for(i=4;i<=N;i+=2)
+//	 if(guess(i)!=0) printf("%d=%d+%d\n",i,guess(i),i-guess(i));
+//}
+
+
+
+
+
+//homework3_H
+//#include<stdio.h>
+//int check(int x)
+//{
+//	if(x==0||x==1)return 0;
+//	for(int i=2;i*i<=x;i++)
+//	{
+//		if(x%i==0) return 0;
+//	}
+//	return 1;
+// } 
+//
+//int huiwen(int n)
+//{
+//	int a[12];
+//	int flag=1;        //方法一：采用数组，进行数组元素的比较 
+//	while(n>0)
+//	{
+//		a[flag]=n%10;
+//		n/=10;
+//		flag++;
+//	}
+//	for(int i=1;i<=flag/2;i++)
+//	{
+//		if(a[i]!=a[flag-i]) return 0; //13 12 0 11
+//	 } 
+//	 return 1;
+//	 
+////	                        //方法二：数字反转，反转后与原数比较
+////	int sum=0;
+////	while(n!=0)
+////	{
+////		sum=sum*10+n%10;
+////		n/=10;
+////	} 
+////	if(num==n)return 1;
+////	else return 0;
+//	
+//}
+//int main()
+//{
+//	int a,b;
+//	scanf("%d %d",&a,&b);
+//	for(int i=a;i<=b;i++)
+//	{
+//		if(huiwen(i)&&check(i))
+//			printf("%d\n",i);
+//	}
+//	
+//	return 0;
+//}
+
+
+
+
+
+//homework3_I
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

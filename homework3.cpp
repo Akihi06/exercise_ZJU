@@ -559,21 +559,130 @@
 
 //homework3_I
 
+//#include<stdio.h>            //这个没通过 
+//#include<math.h>
+//int main()
+//{
+//	long long int a,sum=0;
+//	long long int ans=0;
+//	while(scanf("%d",&a)!=EOF)
+//	{
+//		ans+=a;
+//		sum++;
+//	}
+//	ans=ans*pow(2,sum-1);
+//	printf("%lld",ans);
+//	return 0;
+// } 
+
+//#include<stdio.h>
+//#include<math.h>             //这个accept了 
+//int main()
+//{
+//	int a[99];
+//	int i=0;
+//	long long int sum=0;
+//	while(scanf("%d",&a[i])!=EOF)
+//	{
+//		sum=sum+a[i];
+//		i++;
+//	}
+//    sum=sum*pow(2,i-1);
+//    printf("%lld",sum);
+//    return 0;
+//}
+
+
+
+
+//homework3_J
+
+#include<stdio.h>
+int taozi(int n)
+{
+	if(n==1) return 1;
+	//taozi(n-1)=taozi(n)/2-1;
+	//return taozi(n);
+	return 2*(taozi(n-1) + 1);
+}
+int main()
+{
+	int n,num;
+	scanf("%d",&n);
+	num=taozi(n);
+	printf("%d",num);
+	return 0;
+}
+
+
+
+//#include<stdio.h>
+//int fun(int n)
+//{
+//    if(n == 1)
+//        return 1;
+//    return 2*(fun(n-1) + 1);
+//}
+//int main(void)
+//{
+//    printf("%d",fun(10));
+//}
+
+
+
+
+//int main()
+//{
+//int count = 1;
+//for (int i = 10; i > 1; i--)
+//{
+//count = (count + 1) * 2;
+//}
+//printf("%d\n",count);
+//return 0;
+//}
 
 
 
 
 
+//#include<stdio.h>
+//
+//int eat_peach(int day)
+//{
+//    int rs = 0;
+//    if(day==10)
+//    {
+//        rs = 1;
+//        printf("day:%d  rs:%d\n",day,rs);
+//    }
+//    else
+//    {
+//        rs = (eat_peach(day+1) + 1) * 2;
+//        printf("day:%2d  rs:%d\n",day,rs);
+//    }
+//    return rs;
+//}
+//
+//void main()
+//{
+//    eat_peach(1);
+//}
 
 
 
 
-
-
-
-
-
-
+//#include<stdio.h>
+//int fun(int n)
+//{
+//    if(n == 1)
+//        return 1;
+//    return 2*(fun(n-1) + 1);
+//}
+//int main(void)
+//{
+//    printf("%d",fun(10));
+//}
 
 
 

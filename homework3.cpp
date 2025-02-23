@@ -597,25 +597,25 @@
 
 //homework3_J
 
-#include<stdio.h>
-int taozi(int n)
-{
-	if(n==1) return 1;
-	//taozi(n-1)=taozi(n)/2-1;
-	//return taozi(n);
-	return 2*(taozi(n-1) + 1);
-}
-int main()
-{
-	int n,num;
-	scanf("%d",&n);
-	num=taozi(n);
-	printf("%d",num);
-	return 0;
-}
-
-
-
+//#include<stdio.h>
+//int taozi(int n)
+//{
+//	if(n==1) return 1;
+//	//taozi(n-1)=taozi(n)/2-1;
+//	//return taozi(n);
+//	return 2*(taozi(n-1) + 1);
+//}
+//int main()
+//{
+//	int n,num;
+//	scanf("%d",&n);
+//	num=taozi(n);
+//	printf("%d",num);
+//	return 0;
+//}
+//
+//
+//
 //#include<stdio.h>
 //int fun(int n)
 //{
@@ -627,10 +627,10 @@ int main()
 //{
 //    printf("%d",fun(10));
 //}
-
-
-
-
+//
+//
+//
+//
 //int main()
 //{
 //int count = 1;
@@ -641,11 +641,11 @@ int main()
 //printf("%d\n",count);
 //return 0;
 //}
-
-
-
-
-
+//
+//
+//
+//
+//
 //#include<stdio.h>
 //
 //int eat_peach(int day)
@@ -672,16 +672,31 @@ int main()
 
 
 
+//homework3_K
 //#include<stdio.h>
-//int fun(int n)
+//struct node
 //{
-//    if(n == 1)
-//        return 1;
-//    return 2*(fun(n-1) + 1);
-//}
-//int main(void)
+//	char name[1000];
+//	int age;
+//	int score;
+// }student[10]; 
+//
+//int main()
 //{
-//    printf("%d",fun(10));
+//	int n;
+//	scanf("%d",&n);
+//	for(int i=1;i<=n;i++)
+//	{
+//		scanf("%s %d %d",student[i].name,&student[i].age,&student[i].score);         //记得取地址 ！！！！！ 
+//	}
+//	for(int i=1;i<=n;i++)
+//	{
+//		student[i].age++;
+//		student[i].score*=1.2;
+//		if(student[i].score>600)student[i].score=600;
+//		printf("%s %d %d\n",student[i].name,student[i].age,student[i].score);
+//	}
+//	return 0;
 //}
 
 
@@ -689,6 +704,126 @@ int main()
 
 
 
+//homework3_L
+
+////#include<stdio.h>
+////#include<stdlib.h>
+////#include<string>
+//
+//#include <iostream>
+//#include <string>
+//#include <cmath>
+//using namespace std;
+//struct node
+//{                                               //涉及到string类型的话，就直接用C++ 
+//	string name;
+//	int a,b,c;
+//	int score;
+//}student[1005];
+//
+//
+//int main()
+//{
+//	int n;
+//	scanf("%d",&n);
+//	
+//	for(int i=1;i<=n;i++)
+//	{
+//		student[i].name.resize(100);
+//		scanf("%s %d %d %d",&student[i].name,&student[i].a,&student[i].b,&student[i].c);
+//		student[i].score=student[i].a+student[i].b+student[i].c;
+//	}
+//	for(int j=1;j<=n;j++)
+//	{
+//		//for(int k=j;k<=n;k++)
+//		for(int k=j+1;k<=n;k++)
+//		{
+//			if(abs(student[j].score-student[k].score)<=10
+//			&&abs(student[j].a-student[k].a)<=5
+//			&&abs(student[j].b-student[k].b)<=5
+//			&&abs(student[j].c-student[k].c)<=5);
+//			{
+////				if(student[j].name<student[k].name){
+////					printf("%s %s",student[j].name.c_str(),student[k].name.c_str());
+////				}
+////				else
+////					printf("%s %s",student[k].name.c_str(),student[j].name.c_str());
+//				if (student[j].name < student[k].name)
+//                    cout << student[j].name << " " << student[k].name << "\n";
+//                else
+//                    cout << student[k].name << " " << student[j].name << "\n";
+//
+//			}
+//		}
+//	}
+//	return 0;
+//}
+//
+//
+//
+//
+//
+//#include <iostream>
+//#include <string>
+//#include <cmath>
+//using namespace std;
+//
+//int main()
+//{
+//    //定义Student结构体，用于表示学生的相关信息
+//    struct Student
+//    {
+//        string name;  //学生的姓名
+//        int chinese;  //语文课程成绩
+//        int m;        //数学课程成绩
+//        int e;        //英语课程成绩
+//        int sum;      //上述三门课程成绩的总和
+//    };
+//    //声明一个Student结构体类型的数组，用于存储多个学生的信息，最多可存1000个学生
+//    struct Student student[1000];
+//    int N;
+//    cin >> N;    //从标准输入获取要输入的学生数量
+//    for (int i = 0; i < N; i++)
+//    {
+//        //依次读取学生的姓名、语文课程成绩、数学课程成绩、英语课程成绩
+//        cin >> student[i].name
+//            >> student[i].chinese
+//            >> student[i].m
+//            >> student[i].e;
+//        //计算该学生三门课程成绩的总和，并存储到sum成员变量中
+//        student[i].sum =
+//            student[i].chinese
+//            + student[i].m
+//            + student[i].e;
+//    }
+//    //两层嵌套循环，用于对学生信息进行两两比较
+//    for (int i = 0; i < N - 1; i++)
+//    {
+//        for (int j = i + 1; j < N; j++)
+//        {
+//            //判断两个学生的每门课程成绩差值的绝对值是否满足相应条件
+//            //语文课程成绩差值绝对值需不大于5
+//            //数学课程成绩差值绝对值需不大于5
+//            //英语课程成绩差值绝对值需不大于5
+//            //总成绩差值绝对值需不大于10
+//            if (abs(student[i].chinese - student[j].chinese) <= 5
+//                && abs(student[i].m - student[j].m) <= 5
+//                && abs(student[i].e - student[j].e) <= 5
+//                && abs(student[i].sum - student[j].sum) <= 10)
+//            {
+//        //如果满足成绩条件，按照姓名字典序比较两个学生的姓名
+//        //若学生i的姓名字典序小于学生j的姓名字典序，则先输出学生i的姓名，再输出学生j的姓名
+//                if (student[i].name < student[j].name)
+//                    cout << student[i].name << " " << student[j].name << "\n";
+//                //反之，先输出学生j的姓名，再输出学生i的姓名
+//                else
+//                    cout << student[j].name << " " << student[i].name << "\n";
+//            }
+//        }
+//    }
+//    return 0;
+//}
+//
 
 
 
@@ -699,39 +834,121 @@ int main()
 
 
 
+//homework3_M
+
+
+#include<bits/stdc++.h>                     //ans1
+int a[1025][1025];
+int i,j;
+void f(int n,int x,int y){
+	if(n==1){
+		for(i=x;i<x+pow(2,n)/2;i++){
+			for(j=y;j<y+pow(2,n)/2;j++)
+				a[i][j]=0;
+		}
+	}
+	else{
+		f(n-1,x+pow(2,n)/2,y);
+		f(n-1,x+pow(2,n)/2,y+pow(2,n)/2);
+		f(n-1,x,y+pow(2,n)/2);
+		for(i=x;i<x+pow(2,n)/2;i++){
+			for(j=y;j<y+pow(2,n)/2;j++)
+				a[i][j]=0;
+		}
+	}
+}
+int main(){
+	int n,t=1;
+	scanf("%d",&n);
+	for(i=1;i<=pow(2,n);i++){
+		for(j=1;j<=pow(2,n);j++){
+			a[i][j]=1;
+		}
+	}
+	f(n,t,t);
+	int g=pow(2,n);
+	for(i=1;i<=pow(2,n);i++){
+		for(j=1;j<pow(2,n);j++){
+			printf("%d ",a[i][j]);
+		}
+		printf("%d\n",a[i][g]);
+	}
+}
 
 
 
 
 
 
+#include <iostream>                        //cpp ans 2
+#include <cmath>
+using namespace std;
+int ans[1050][1050] = {0}, n;          //2^10=1024 
+void she(int x, int y, int n) {
+    if (n == 0) {
+        ans[x][y] = 1;
+    } else {
+        she(x + (pow(2, n - 1)), y, n - 1);
+        she(x, y + (pow(2, n - 1)), n - 1);
+        she(x + (pow(2, n - 1)), y + (pow(2, n - 1)), n - 1);
+    }
+}
+int main() {
+    cin >> n;
+    she(0, 0, n);
+    for (int i = 0; i < pow(2, n); i++) {
+        for (int j = 0; j < pow(2, n); j++) {
+            cout << ans[i][j] << " ";
+        }
+        cout << endl;
+    }
+    return 0;
+}
 
 
 
 
 
 
+#include<stdio.h>                                           //C ans 3
+#include<math.h>
+void pardon(int *start,int x,int y);
+int main()
+{
+	int n,i,j;
+	scanf("%d",&n);
+	int m = (int)pow(2,n);
+	int crimer[m][m];	
+	for(i=0;i<m;i++)
+		for(j=0;j<m;j++)
+			crimer[i][j] = 1;
+	
+	pardon(&crimer[0][0],m,m);
+	
+	for(i=0;i<m;i++)
+	{
+		for(j=0;j<m;j++)
+			printf("%d ",crimer[i][j]);
+		printf("\n");
+	}	
+			
+	return 0;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+void pardon(int *start,int x,int y) 
+{
+	int *p,k,row;  //p表示每行赦免的第一个位置，k用来进行列的右移，row用来记录所在行 
+	if(x>0)
+	{
+		for(p=start,row=0;row<x/2;p+=y,row++)	//y的作用是让p换行 
+			for(k=0;k<x/2;k++)
+				*(p+k) = 0;
+								 
+		pardon(start+x/2,x/2,y);       //对右上的方块进行赦免 
+		pardon(start+y*x/2,x/2,y);     //对左下的方块进行赦免 
+		pardon(start+(y+1)*x/2,x/2,y); //对右下的方块进行赦免 
+	}	
+}
 
 
 

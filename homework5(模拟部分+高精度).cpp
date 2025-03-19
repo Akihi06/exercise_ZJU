@@ -370,29 +370,125 @@
 
 
 
+//#include<bits/stdc++.h>
+//using namespace std;
+//const int MAXN=100005;
+//char a1[MAXN],b1[MAXN];
+//int a[MAXN],b[MAXN],c[MAXN],la,lb,lc;
+//int main()
+//{
+//	cin>>a1>>b1;
+//	la=strlen(a1),lb=strlen(b1);
+//	for(int i=0;i<la;i++)a[i]=a1[la-i-1]-'0';
+//	for(int i=0;i<lb;i++)b[i]=b1[lb-i-1]-'0';
+//	lc=la+lb;
+//	for(int i=0;i<la;i++){
+//		for(int j=0;j<lb;j++){
+//			c[i+j]+=a[i]*b[j];               //一定注意这里都是+=！！！！！！！！ 
+//			c[i+j+1]+=c[i+j]/10;
+//			c[i+j]%=10;
+//		}
+//	}
+//	while(c[lc-1]==0&&lc>1)lc--;
+//	for(int i=lc-1;i>=0;i--)cout<<c[i];
+//	return 0;
+// } 
+
+
+
+
+//F - 高精度减法
+
+//  1234     4321
+// -  56     65
+// _____ 
+
+//    56
+// -1234
+//______
+//数字的字典序：
+//短的更小，数字小的更大小（与常理一致）
+////错误 ：位数不同时，从高位开始比25>3(因为2>3)
+//位数相同时，58>52 
+//123<125
+//字典序的最高优先级往往不是长度！！！！！！ 
 #include<bits/stdc++.h>
 using namespace std;
-const int MAXN=100005;
-char a1[MAXN],b1[MAXN];
+const int MAXN=20090;
+//char a1[MAXN],b1[MAXN];
+string a1,b1; 
 int a[MAXN],b[MAXN],c[MAXN],la,lb,lc;
 int main()
 {
+	bool flag=false;
 	cin>>a1>>b1;
-	la=strlen(a1),lb=strlen(b1);
+	la=a1.length();
+	lb=b1.length();
+	//if(a1<b1)  5>23
+	if(la<lb||(la==lb&&a1<b1))
+	{
+		swap(a1,b1);
+		swap(la,lb);
+		flag=true; 
+	}
 	for(int i=0;i<la;i++)a[i]=a1[la-i-1]-'0';
 	for(int i=0;i<lb;i++)b[i]=b1[lb-i-1]-'0';
-	lc=la+lb;
-	for(int i=0;i<la;i++){
-		for(int j=0;j<lb;j++){
-			c[i+j]+=a[i]*b[j];               //一定注意这里都是+=！！！！！！！！ 
-			c[i+j+1]+=c[i+j]/10;
-			c[i+j]%=10;
+	lc=la;
+	for(int i=0;i<lc;i++){
+		if(a[i]<b[i]){
+			c[i]+=10;
+			c[i+1]--;
+//			a[i]+=10;
+//			a[i+1]--;
 		}
+		c[i]+=a[i]-b[i];
 	}
 	while(c[lc-1]==0&&lc>1)lc--;
+	if(flag)cout<<'-';
 	for(int i=lc-1;i>=0;i--)cout<<c[i];
 	return 0;
- } 
+ }
+
+
+
+
+
+//#include<bits/stdc++.h>
+//using namespace std;
+//string a,b;
+//int lena,lenb;
+//int x[20090],y[20090],c[20090];
+//int t;
+//int main()
+//{
+//	int flag=false;	
+//	cin>>a>>b;	
+//	lena=a.size();	
+//	lenb=b.size();	
+//	if(lena<lenb||(lena==lenb&&a<b)){	
+//		swap(a,b);		
+//		swap(lena,lenb);		
+//		flag=true;
+//	}	
+//	for(int i=1;i<=lena;i++){	
+//		x[i]=a[lena-i]-'0';	
+//	}	
+//	for(int i=1;i<=lenb;i++){	
+//		y[i]=b[lenb-i]-'0';
+//	}	
+//	int lenc=lena;	
+//	for(int i=1;i<=lenc;i++){	
+//		if(x[i]<y[i]){		
+//			x[i+1]--;			
+//			x[i]+=10;	
+//		}		
+//		c[i]=x[i]-y[i];
+//	}	
+//	while(c[lenc]==0&&lenc>1) lenc--;//注意，和乘法一样要消去0，因为减法会导致位数减少	
+//	if(flag) cout<<'-';	
+//	for(int i=lenc;i>=1;i--) cout<<c[i];		
+//	return 0;
+//}
 
 
 
@@ -402,22 +498,43 @@ int main()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//#include<bits/stdc++.h>
+//using namespace std;
+//string a,b; 
+//int lena,lenb;
+//int x[20090],y[20090],c[20090];
+//int main()
+//{
+//	int flag=false;
+//	cin>>a>>b;
+//	lena=a.size();
+//	lenb=b.size();
+//	if(lena<lenb||(lena==lenb&&a<b)){
+//		swap(a,b);
+//		swap(lena,lenb);
+//		flag=true; 
+//	}
+//	for(int i=1;i<=lena;i++){
+//		x[i]=a[lena-i]-'0';
+//	}
+//	for(int i=1;i<=lenb;i++){
+//		y[i]=b[lenb-i]-'0';//注意减去0！！！！！！！！ 
+//	}
+//	int lenc=lena;
+//	for(int i=1;i<=lenc;i++){
+//		if(x[i]<y[i]){
+////			c[i]+=10;
+////			c[i+1]--;
+//			x[i]+=10;
+//			x[i+1]--;
+//		}
+//		c[i]+=x[i]-y[i];
+//	}
+//	while(c[lenc]==0&&lenc>1)lenc--;
+//	if(flag)cout<<'-';
+//	for(int i=lenc;i>=1;i--)cout<<c[i];
+//	return 0;
+// } 
 
 
 

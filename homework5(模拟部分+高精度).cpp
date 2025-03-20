@@ -397,6 +397,10 @@
 
 
 
+
+
+
+
 //F - 高精度减法
 
 //  1234     4321
@@ -412,42 +416,54 @@
 //位数相同时，58>52 
 //123<125
 //字典序的最高优先级往往不是长度！！！！！！ 
-#include<bits/stdc++.h>
-using namespace std;
-const int MAXN=20090;
-//char a1[MAXN],b1[MAXN];
-string a1,b1; 
-int a[MAXN],b[MAXN],c[MAXN],la,lb,lc;
-int main()
-{
-	bool flag=false;
-	cin>>a1>>b1;
-	la=a1.length();
-	lb=b1.length();
-	//if(a1<b1)  5>23
-	if(la<lb||(la==lb&&a1<b1))
-	{
-		swap(a1,b1);
-		swap(la,lb);
-		flag=true; 
-	}
-	for(int i=0;i<la;i++)a[i]=a1[la-i-1]-'0';
-	for(int i=0;i<lb;i++)b[i]=b1[lb-i-1]-'0';
-	lc=la;
-	for(int i=0;i<lc;i++){
-		if(a[i]<b[i]){
-			c[i]+=10;
-			c[i+1]--;
+//#include<bits/stdc++.h>
+//using namespace std;
+//const int MAXN=20090;
+////char a1[MAXN],b1[MAXN];
+//string a1,b1; 
+//int a[MAXN],b[MAXN],c[MAXN],la,lb,lc;
+//int main()
+//{
+//	bool flag=false;
+//	cin>>a1>>b1;
+//	la=a1.length();
+//	lb=b1.length();
+//	//if(a1<b1)  5>23
+//	if(la<lb||(la==lb&&a1<b1))
+//	{
+//		swap(a1,b1);
+//		swap(la,lb);
+//		flag=true; 
+//	}
+//	for(int i=0;i<la;i++)a[i]=a1[la-i-1]-'0';
+//	for(int i=0;i<lb;i++)b[i]=b1[lb-i-1]-'0';
+//	lc=la;
+//	for(int i=0;i<lc;i++){
+//		if(a[i]<b[i]){
+////			c[i]+=10;
+////			c[i+1]--;
+//			
+//			//1 0 2  la=3
+//			//-   8  lb=1
+//			//i=0,a[0]=2<b[0]=8,
+//			//c[0]+=10,c[1]--
+//			//c[10,-1,...]
+//			//c[0]=10+2-8=4,c[1]=-1
+//			//c[4,-1,000000]
+//			//i=1,a[1]=0,b[1]=0,不满足借位条件，不借位，c[1]=-1; 
+//			//i=2,a[2]=1,b[2]=0,不借位，c[2]=1;
+//			//c[4,-1,1] 
+//			
 //			a[i]+=10;
 //			a[i+1]--;
-		}
-		c[i]+=a[i]-b[i];
-	}
-	while(c[lc-1]==0&&lc>1)lc--;
-	if(flag)cout<<'-';
-	for(int i=lc-1;i>=0;i--)cout<<c[i];
-	return 0;
- }
+//		}
+//		c[i]+=a[i]-b[i];
+//	}
+//	while(c[lc-1]==0&&lc>1)lc--;
+//	if(flag)cout<<'-';
+//	for(int i=lc-1;i>=0;i--)cout<<c[i];
+//	return 0;
+// }
 
 
 
@@ -495,46 +511,242 @@ int main()
 
 
 
+//G - 魔法少女小Scarlet
+
+
+//	1  2  3  4  5
+//	6  7  8  9  10
+//	11 12 13 14 15
+//	16 17 18 19 20
+//	21 22 23 24 25 
+//(x,y)顺时针》》(y,-x)
+//     逆时针》》(-y,x) 
+
+//#include<bits/stdc++.h>
+//using namespace std;
+//int m,n;
+//int a[505][505],b[505][505];
+//int x,y,r,z;
+//void solve(int x,int y,int r,int z)
+//{
+//	memset(b,0,sizeof(b));
+////      memset(void *str,int c,size_t n)
+////指向要填充的内存块指针 要设置的值，函数会将该值转换为unsigned char类型后填充 要填充的字节数 
+////memset是一个标准库函数，用于将一段内存区域设置为指定的值
+////包含在cstring头文件 
+//	int x1,x2,y1,y2;
+//	for(int i=x-r;i<=x+r;i++)
+//	{
+//		for(int j=y-r;j<=y+r;j++)
+//		{
+//			x1=i-x,y1=j-y;//旋转前该位置的相对位置（以给定的点作为原点） 
+//		
+//			if(z==1)
+//			{
+//				x2=-y1;
+//				y2=x1;
+//			} 
+//			else
+//			{
+//				x2=y1;
+//				y2=-x1;
+//			}
+//			b[x2+x][y2+y]=a[i][j];
+//		}
+//	} 
+//	for(int i=x-r;i<=x+r;i++){
+//		for(int j=y-r;j<=y+r;j++){
+//			a[i][j]=b[i][j];
+//		}
+//	}
+//}
+//
+//int main()
+//{
+//	cin>>n>>m;
+//	int cnt=0;
+//	for(int i=1;i<=n;i++){
+//		for(int j=1;j<=n;j++){
+//			a[i][j]=++cnt;
+//		}
+//	}
+//	while(m--){
+//		cin>>x>>y>>r>>z;
+//		solve(x,y,r,z);
+//	}
+//	for(int i=1;i<=n;i++){
+//		for(int j=1;j<=n;j++){
+//			cout<<a[i][j]<<" ";
+//		}
+//		cout<<endl;
+//	}
+//	return 0;
+// } 
+
+
+
+
+
+
+//H - 生活大爆炸版石头剪刀布
+
+
+//#include<bits/stdc++.h>                   //ans1 
+//using namespace std;
+//int n,na,nb;
+//int a[205],b[205];
+//int cmp[10][10];//学习这里这个cmp的用法， 
+//void init()
+//{
+//	cmp[0][2]=cmp[0][3]=cmp[1][0]=cmp[1][3]=cmp[2][1]=cmp[2][4]=cmp[3][2]=cmp[3][4]=cmp[4][0]=cmp[4][1]=1;
+//	cmp[0][1]=cmp[0][4]=cmp[1][2]=cmp[1][4]=cmp[2][0]=cmp[2][3]=cmp[3][0]=cmp[3][1]=cmp[4][2]=cmp[4][3]=-1 ;
+//}
+//int main()
+//{
+//	init();//补药忘记这一行啊啊啊啊 
+//	cin>>n>>na>>nb;
+//	for(int i=0;i<na;i++){
+//		cin>>a[i];
+//	}
+//	for(int i=0;i<nb;i++){
+//		cin>>b[i];
+//	}
+////	while(n--){
+////		//这时候不太好用啊 
+////	}
+//	int ansa=0,ansb=0;
+//	for(int i=0;i<n;i++){
+//		int a1=a[i%na];
+//		int b1=b[i%nb];
+//		if(cmp[a1][b1]==1)ansa++;
+//		else if(cmp[a1][b1]==-1)ansb++;
+//		else continue;
+//	} 
+//	cout<<ansa<<" "<<ansb;
+//	return 0;
+// } 
+
+
+
+
+//#include<bits/stdc++.h>                           //ans2 
+//using namespace std;
+//int x[205],y[205],cmp[10][10];
+//void init()
+//{
+//	cmp[0][1]=cmp[0][4]=cmp[1][2]=cmp[1][4]=cmp[2][3]=-1;	
+//	cmp[0][2]=cmp[0][3]=cmp[1][3]=cmp[2][4]=cmp[3][4]=1;
+//}
+//int main()
+//{
+//	init();	
+//	int n,lena,lenb,ansa=0,ansb=0;	
+//	cin>>n>>lena>>lenb;	
+//	for(int i=0;i<lena;i++){	
+//		cin>>x[i];	
+//	}	
+//	for(int i=0;i<lenb;i++){	
+//		cin>>y[i];	
+//	}	
+//	for(int i=0;i<n;i++){	
+//		int x1=x[i%lena],y1=y[i%lenb];		
+//		if(x1>y1){		
+//			cmp[x1][y1]=-cmp[y1][x1];	//这样的话最开始就没有那么长了	
+//		}		
+//		if(cmp[x1][y1]==1){		
+//			ansa+=1;		
+//		}		
+//		if(cmp[x1][y1]==-1){		
+//			ansb+=1;		
+//		}	
+//	}	
+//	cout<<ansa<<" "<<ansb<<endl;	
+//	return 0;
+//}
+
+
+
+
+//#include<iostream>                        //ans3 
+//#include<algorithm>
+//#include<vector>
+// 
+//using namespace std;
+// 
+//int main()
+//{
+//	int n;
+//	cin>>n;
+//	int a,b; 
+//	cin>>a>>b;
+//	vector<int> vec1(200);
+//	vector<int> vec2(200);
+//	for(int i = 0 ; i < a ; i ++)
+//		cin>>vec1[i];
+//	for(int j = 0 ; j < b ; j ++)
+//		cin>>vec2[j];
+//	
+//	int res1 = 0 , res2 = 0;
+// 
+//	// 对战表 (甲 -> 乙) 
+//	int vs[5][5] = {{0,0,1,1,0},
+//                        {1,0,0,1,0},
+//                        {0,1,0,0,1},
+//                        {0,0,1,0,1},
+//                        {1,1,0,0,0}};
+//	for(int i = 0 ; i < n ; i ++)
+//	{
+//		res1 += vs[vec1[i%a]][vec2[i%b]]; // 取模，若下标为a，则下标从0开始
+//		res2 += vs[vec2[i%b]][vec1[i%a]]; // 取模，若下标为b，则下标从0开始
+//	}
+//	cout<<res1<<" "<<res2<<endl;
+//	
+//	return 0;
+//} 
+
+
+
+
+
+
+
+
+//I - 多项式输出
 
 
 
 //#include<bits/stdc++.h>
+////#define int long long  //不用这个好像也能通过？ 
 //using namespace std;
-//string a,b; 
-//int lena,lenb;
-//int x[20090],y[20090],c[20090];
+//
 //int main()
 //{
-//	int flag=false;
-//	cin>>a>>b;
-//	lena=a.size();
-//	lenb=b.size();
-//	if(lena<lenb||(lena==lenb&&a<b)){
-//		swap(a,b);
-//		swap(lena,lenb);
-//		flag=true; 
+//	int n;
+//	cin>>n;
+//	for(int i=n;i>=0;i--){
+//		int a;
+//		cin>>a;
+//		if(a){
+//			if(i!=n&&a>0)cout<<'+';
+//			if(i!=0&&a==-1)cout<<'-';//输出-而不是-1 
+//			if(abs(a)>1||i==0)cout<<a;
+//			if(i>1)cout<<"x^"<<i;
+//			if(i==1)cout<<'x';
+//		} 
 //	}
-//	for(int i=1;i<=lena;i++){
-//		x[i]=a[lena-i]-'0';
-//	}
-//	for(int i=1;i<=lenb;i++){
-//		y[i]=b[lenb-i]-'0';//注意减去0！！！！！！！！ 
-//	}
-//	int lenc=lena;
-//	for(int i=1;i<=lenc;i++){
-//		if(x[i]<y[i]){
-////			c[i]+=10;
-////			c[i+1]--;
-//			x[i]+=10;
-//			x[i+1]--;
-//		}
-//		c[i]+=x[i]-y[i];
-//	}
-//	while(c[lenc]==0&&lenc>1)lenc--;
-//	if(flag)cout<<'-';
-//	for(int i=lenc;i>=1;i--)cout<<c[i];
 //	return 0;
 // } 
+
+
+
+
+
+
+//J - 阶乘之和
+
+
+
+
 
 
 

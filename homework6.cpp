@@ -510,19 +510,40 @@
 
 #include<bits/stdc++.h>
 using namespace std;
-int a[55][55];
-int b[55],r[55];
+int s[55][5];
+int ans=0x2f2f2f;
+string x;
 int main()
 {
-	int n,m;
+	int n,m,a,b,c,q,anss;
 	cin>>n>>m;
-	for(int i=1;i<=n;i++){
-		for(int j=1;j<=m;j++){
-			cin>>a[i][j]; 
-		}
-		getchar();
-	}
 	
+	for(int i=1;i<=n;i++){
+		cin>>x; //直接输入一排
+		a=b=c=0;//注意在这里清理！！！！！！！！！！！！！！ 
+		for(int j=0;j<m;j++){
+		//这一排从0开始 
+			if(x[j]=='W')a++;//白 
+			if(x[j]=='B')b++;//蓝 
+			if(x[j]=='R')c++;//红 
+		}
+		s[i][1]=m-a;//全涂成白色 
+		s[i][2]=m-b;//全涂成蓝色 
+		s[i][3]=m-c;//全涂成红色 
+	}
+	q=s[1][1]+s[n][3];
+//	cout<<s[1][1]<<' '<<s[n][3]<<endl;
+	for(int i=2;i<=n-1;i++){
+		for(int j=i;j<=n-1;j++){
+			anss=0;
+			for(int k=i;k<=j;k++)anss+=s[k][2];
+			for(int k=i-1;k>=2;k--)anss+=s[k][1];
+			for(int k=i+1;k<=n-1;k++)anss+=s[k][3];
+			ans=min(ans,anss);
+		}
+	} 
+//	cout<<q<<endl;
+	cout<<ans+q;
 	return 0;
  } 
 

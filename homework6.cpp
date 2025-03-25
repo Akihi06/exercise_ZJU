@@ -508,44 +508,207 @@
 
 
 
+//#include<bits/stdc++.h>
+//using namespace std;
+////int s[55][5];
+////int ans=0x2f2f2f;
+//int ans=0x2f2f2f,anss,q,s[51][4];
+//
+//int main()
+//{
+//	int n,m,a,b,c;
+////	int n,m,a,b,c,q,anss;
+//	cin>>n>>m;
+//	string x;
+//	for(int i=1;i<=n;i++){
+//		cin>>x; //直接输入一排
+//		a=b=c=0;//注意在这里清理！！！！！！！！！！！！！！ 
+//		for(int j=0;j<m;j++){
+//		//这一排从0开始 
+//			if(x[j]=='W') a++;//白 
+//			if(x[j]=='B') b++;//蓝 
+//			if(x[j]=='R') c++;//红 
+//		}
+//		s[i][1]=m-a;//全涂成白色 
+//		s[i][2]=m-b;//全涂成蓝色 
+//		s[i][3]=m-c;//全涂成红色 
+//	}
+//	q=s[1][1]+s[n][3];
+////	cout<<s[1][1]<<' '<<s[n][3]<<endl;
+//	for(int i=2;i<=n-1;i++){
+//		for(int j=i;j<=n-1;j++){
+//			anss=0;
+//			for(int k=i;k<=j;k++)anss+=s[k][2];
+//			for(int k=i-1;k>=2;k--)anss+=s[k][1];
+//			for(int k=j+1;k<=n-1;k++)anss+=s[k][3];
+//			ans=min(ans,anss);
+//		}
+//	} 
+////	cout<<q<<endl;
+//	cout<<ans+q;
+//	return 0;
+// } 
+
+
+//4 5
+//WRWRW
+//BWRWB
+//WRWRW
+//RWBWR
+
+//#include<bits/stdc++.h>
+//using namespace std;
+//int s[55][5],ans=0x2f2f2f,anss,q;
+//int main()
+//{
+//	int n,m,a,b,c;
+//	cin>>n>>m;
+//	string x;
+//	for(int i=1;i<=n;i++){
+//		cin>>x;                //注意在哪里输入！！！！！！！！！！ 
+//		a=b=c=0;
+//		for(int j=0;j<m;j++){
+//			if(x[j]=='W')a++;
+//			if(x[j]=='B')b++;
+//			if(x[j]=='R')c++;
+//		}
+//		s[i][1]=m-a;
+//		s[i][2]=m-b;
+//		s[i][3]=m-c;
+//	}
+//	//2~i-1
+//	//i~j
+//	//j+1~n-1
+//	q=s[1][1]+s[n][3];
+//	for(int i=2;i<=n-1;i++){
+//		for(int j=i;j<=n-1;j++){
+//			anss=0;
+//			for(int k=i;k<=j;k++)anss+=s[k][2];
+//			for(int k=i-1;k>=2;k--)anss+=s[k][1];
+//			for(int k=j+1;k<=n-1;k++)anss+=s[k][3];
+//			ans=min(ans,anss); 
+//		}
+//	}
+//	cout<<q+ans;
+//	return 0;
+// } 
+
+
+
+
+
+
+
+
+
+//L - 火柴棒等式
+
+
+////当n=24的时候，纯数字20根，那么小于四位（因为1111 要8根）那枚举0~1000就行
+//#include<bits/stdc++.h>
+//using namespace std;
+//int cnt[10]={6,2,5,5,4,5,6,3,7,6};
+//int matches(int num){
+//	int i,k=0;
+//	for(i=num;i!=0;i/=10)k+=cnt[i%10];
+//	if(num==0)k+=6;
+//	return k;
+//}
+//int main()
+//{
+//	int n,sum=0;
+//	cin>>n;
+//	for(int i=0;i<=1000;i++){
+//		for(int j=0;j<=1000;j++){
+//			if(matches(i)+matches(j)+matches(i+j)+4==n)
+//				sum++;
+//		}
+//	}
+//	cout<<sum<<endl;
+//	
+//	return 0;
+// } 
+
+
+
+
+
+//M - PERKET
+
+
+//#include<bits/stdc++.h>
+//using namespace std;
+//int n;
+//int s[15],b[15];
+//int ans=2e9;
+//void dfs(int cnt,int x,int y)
+//{
+//	if(cnt>n){
+//		if(x==1&&y==0)return ;
+//		ans=min(ans,abs(x-y));
+//		return ;
+//	}
+//	dfs(cnt+1,x*s[cnt],y+b[cnt]);//加 
+//	dfs(cnt+1,x,y);//不加 (不选择当前选择的第cnt个元素)                       //学一下这里 
+//	//通过这两种递归调用，代码可以遍历所有选择或不选择每个元素的组合情况 
+// } 
+//int main()
+//{
+//	cin>>n;
+//	for(int i=1;i<=n;i++){
+//		cin>>s[i]>>b[i];
+//	}
+//	dfs(1,1,0);
+//	cout<<ans;
+//	return 0;
+//}
+
+
+
+
+
+//N - 小 Y 拼木棒
+
+
 #include<bits/stdc++.h>
 using namespace std;
-int s[55][5];
-int ans=0x2f2f2f;
-string x;
+#define C(a) ((a)*((a)-1)/2)  //组合数 
+const int mod=1e9+7;
 int main()
 {
-	int n,m,a,b,c,q,anss;
-	cin>>n>>m;
-	
-	for(int i=1;i<=n;i++){
-		cin>>x; //直接输入一排
-		a=b=c=0;//注意在这里清理！！！！！！！！！！！！！！ 
-		for(int j=0;j<m;j++){
-		//这一排从0开始 
-			if(x[j]=='W')a++;//白 
-			if(x[j]=='B')b++;//蓝 
-			if(x[j]=='R')c++;//红 
-		}
-		s[i][1]=m-a;//全涂成白色 
-		s[i][2]=m-b;//全涂成蓝色 
-		s[i][3]=m-c;//全涂成红色 
+	int n,pail[100005]={0},cnt=0;
+	cin>>n;
+	for(int i=1;i<=n;i++)
+	{
+		int tmp;
+		cin>>tmp;
+		pail[tmp]++;
 	}
-	q=s[1][1]+s[n][3];
-//	cout<<s[1][1]<<' '<<s[n][3]<<endl;
-	for(int i=2;i<=n-1;i++){
-		for(int j=i;j<=n-1;j++){
-			anss=0;
-			for(int k=i;k<=j;k++)anss+=s[k][2];
-			for(int k=i-1;k>=2;k--)anss+=s[k][1];
-			for(int k=i+1;k<=n-1;k++)anss+=s[k][3];
-			ans=min(ans,anss);
+	for(int a=2;a<=5000;a++)
+	{
+		for(int c=1;c<=a/2;c++)
+		{
+			int d=a-c;
+			if(d==c&&pail[a]>=2&&pail[c]>=2){ //  2/4相等 
+				cnt+=(C(pail[a]%mod)*C(pail[c]%mod))%mod;
+			}
+			else if(d!=c&&pail[a]>=2&&pail[c]&&pail[d]){//  2/4不相等 
+				cnt+=(C(pail[a]%mod)*(pail[c]%mod)*(pail[d]%mod))%mod;
+			}
+			cnt%=mod;
 		}
-	} 
-//	cout<<q<<endl;
-	cout<<ans+q;
+	}
+	cout<<cnt%mod;
 	return 0;
  } 
+
+
+
+
+
+
+
+
 
 
 

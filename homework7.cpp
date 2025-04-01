@@ -670,7 +670,30 @@
 
 
 
-
+#include<bits/stdc++.h>
+using namespace std;
+void solve(int x,int k){
+//需要处理的数   在二进制的第几位上
+	if(x==0)return ;//结束条件
+	solve(x/2,k+1);
+	if(x%2==1){
+		if(x!=1)cout<<'+';
+		if(k==0)cout<<"2(0)";
+		else if(k==1)cout<<2;
+		else{
+			cout<<"2(";
+			solve(k,0);
+			cout<<')';
+		}
+	} 
+}
+int main()
+{
+	int n;
+	cin>>n;
+	solve(n,0);
+	return 0;
+}
 
 
 

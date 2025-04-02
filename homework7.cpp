@@ -670,48 +670,93 @@
 
 
 
+
+////H - 幂次方
+//#include<bits/stdc++.h>
+//using namespace std;
+//void solve(int x,int k){
+////需要处理的数   在二进制的第几位上
+//	if(x==0)return ;//结束条件
+//	solve(x/2,k+1);
+//	if(x%2==1){
+//		if(x!=1)cout<<'+';
+//		//x==1说明二进制处理到最高位了，前面没有＋号 
+//		if(k==0)cout<<"2(0)";
+//		else if(k==1)cout<<2;
+//		else{
+//			cout<<"2(";
+//			solve(k,0);
+//			cout<<')';
+//		}
+//	} 
+//}
+//int main()
+//{
+//	int n;
+//	cin>>n;
+//	solve(n,0);
+//	return 0;
+//}
+
+
+
+
+
+//I - 蜜蜂路线
+
+////斐波拉契数列 
+////要用高精度来做，指数级增长 
+//#include <iostream>
+//using namespace std;
+//int main()
+//{
+//    int m; //从m爬到n
+//    int n;
+//    cin>>m>>n;
+//    int a[1005] = {0}; //存储种类数
+//    a[m] = 1;
+//    a[m+1] = 1;
+//    for(int i=m+2;i<=n;i++){
+//        a[i] = a[i-1]+a[i-2];
+//    }
+//    cout<<a[n]<<endl;
+//    return 0; 
+//}
+
+
+
 #include<bits/stdc++.h>
 using namespace std;
-void solve(int x,int k){
-//需要处理的数   在二进制的第几位上
-	if(x==0)return ;//结束条件
-	solve(x/2,k+1);
-	if(x%2==1){
-		if(x!=1)cout<<'+';
-		if(k==0)cout<<"2(0)";
-		else if(k==1)cout<<2;
-		else{
-			cout<<"2(";
-			solve(k,0);
-			cout<<')';
-		}
-	} 
+long long dp[1010][5010];
+int len=1;
+void js(int x)
+{
+	for(int i=1;i<=len;i++)//按位相加 
+	{
+		dp[x][i]=dp[x-1][i]+dp[x-2][i];
+	}
+	
+	for(int i=1;i<=len;i++)
+	{
+		dp[x][i+1]=dp[x][i+1]+dp[x][i]/10;//进位 
+		dp[x][i]=dp[x][i]%10;//取余 
+	}
+	
+	if(dp[x][len+1]!=0)//判断遍历长度 
+	len++;
 }
 int main()
 {
-	int n;
-	cin>>n;
-	solve(n,0);
+	int m,n;
+	cin>>m>>n;
+	
+	dp[m][1]=1;//初始化 
+	dp[m+1][1]=1;
+	
+	for(int i=m+2;i<=n;i++)
+	js(i);//高精度加法 
+	
+	for(int i=len;i>=1;i--)//倒序输出结果 
+	cout<<dp[n][i];
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 

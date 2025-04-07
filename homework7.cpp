@@ -725,38 +725,158 @@
 
 
 
+//#include<bits/stdc++.h>
+//using namespace std;
+//long long dp[1010][5010];
+//int len=1;
+//void js(int x)
+//{
+//	for(int i=1;i<=len;i++)//按位相加 
+//	{
+//		dp[x][i]=dp[x-1][i]+dp[x-2][i];
+//	}
+//	
+//	for(int i=1;i<=len;i++)
+//	{
+//		dp[x][i+1]=dp[x][i+1]+dp[x][i]/10;//进位 
+//		dp[x][i]=dp[x][i]%10;//取余 
+//	}
+//	
+//	if(dp[x][len+1]!=0)//判断遍历长度 
+//	len++;
+//}
+//int main()
+//{
+//	int m,n;
+//	cin>>m>>n;
+//	
+//	dp[m][1]=1;//初始化 
+//	dp[m+1][1]=1;
+//	
+//	for(int i=m+2;i<=n;i++)
+//	js(i);//高精度加法 
+//	
+//	for(int i=len;i>=1;i--)//倒序输出结果 
+//	cout<<dp[n][i];
+//	return 0;
+//}
+
+
+
+
+//#include<bits/stdc++.h>
+//using namespace std;
+//long long a[1010][1010];
+//int len=1;
+//void f(int x)
+//{
+//	for(int i=1;i<=len;i++){
+//		a[x][i]=a[x-1][i]+a[x-2][i];
+//	}
+//	for(int i=1;i<=len;i++){
+////		a[x+1][i]+=a[x][i]/10;
+//		a[x][i+1]+=a[x][i]/10;
+//		//当前处理的是第x个数！！！！！第x个数的每一位进行处理 
+//		a[x][i]%=10;
+//	}
+//	if(a[x][len+1])len++;
+//}
+//int main()
+//{
+//	int m,n;
+//	cin>>m>>n;
+//	a[m][1]=1,a[m+1][1]=1;
+//	for(int i=m+2;i<=n;i++){
+//		f(i);
+//	} 
+//	for(int i=len;i>=1;i--){
+//		cout<<a[n][i];
+//	}
+//	return 0;
+//}
+
+
+
+
+//J - Function
+
+
 #include<bits/stdc++.h>
 using namespace std;
-long long dp[1010][5010];
-int len=1;
-void js(int x)
+long long ans;
+long long p[65][65][65];//记忆化搜索 
+long long w(long long a,long long b,long long c)
 {
-	for(int i=1;i<=len;i++)//按位相加 
-	{
-		dp[x][i]=dp[x-1][i]+dp[x-2][i];
+	if(a<=0||b<=0||c<=0) return 1;
+	else if(a>20||b>20||c>20) return w(20,20,20);
+	else if(p[a][b][c])return p[a][b][c];
+	else if(a<b&&b<c){
+		p[a][b][c]=w(a,b,c-1)+w(a,b-1,c-1)-w(a,b-1,c);
+		return p[a][b][c];
 	}
-	
-	for(int i=1;i<=len;i++)
-	{
-		dp[x][i+1]=dp[x][i+1]+dp[x][i]/10;//进位 
-		dp[x][i]=dp[x][i]%10;//取余 
+	else{
+		return p[a][b][c]=w(a-1,b,c)+w(a-1,b-1,c)+w(a-1,b,c-1)-w(a-1,b-1,c-1);
+		return p[a][b][c];
 	}
-	
-	if(dp[x][len+1]!=0)//判断遍历长度 
-	len++;
 }
 int main()
 {
-	int m,n;
-	cin>>m>>n;
-	
-	dp[m][1]=1;//初始化 
-	dp[m+1][1]=1;
-	
-	for(int i=m+2;i<=n;i++)
-	js(i);//高精度加法 
-	
-	for(int i=len;i>=1;i--)//倒序输出结果 
-	cout<<dp[n][i];
+	long long a,b,c;
+	while(1){
+		cin>>a>>b>>c;
+		ans=0;
+		if(a==-1&&b==-1&&c==-1)break;
+		ans=w(a,b,c);
+		printf("w(%lld, %lld, %lld) = %lld\n",a,b,c,ans);
+	} 
 	return 0;
-}
+ } 
+
+//unsigned   int   0～4294967295   
+//
+//int   2147483648～2147483647 
+//unsigned long 0～4294967295
+//long   2147483648～2147483647
+//long long的最大值：9223372036854775807         //long long    %lld
+//long long的最小值：-9223372036854775808
+//unsigned long long的最大值：18446744073709551615
+//
+//__int64的最大值：9223372036854775807
+//__int64的最小值：-9223372036854775808
+//unsigned __int64的最大值：18446744073709551615
+
+
+
+//%llu unsigned long long是64位无符号
+//%llx 才是64位16进制数
+//
+//%d int 有符号32位整数
+//%u unsigned int无符号32位整数
+//%lld long long int有符号64位整数
+//%llu unsigned long long 
+//%llx 有符号64位16进制整数
+//%#llx 带0x的64位16进制格式输出
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

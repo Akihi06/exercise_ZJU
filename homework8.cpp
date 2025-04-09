@@ -114,32 +114,203 @@
 
 
 
-//D - 小A的糖果
+////D - 小A的糖果
+//
+//#include<bits/stdc++.h>
+//using namespace std;
+//int main()
+//{
+//	long long n,x;
+//	cin>>n>>x;
+//	long long a[100005];
+//	long long sum=0;
+//	cin>>a[1];
+//	if(a[1]>x){
+//		sum+=a[1]-x;
+//		a[1]=x;
+//	}
+//	
+//	for(int i=2;i<=n;i++){
+//		cin>>a[i];
+//		if(a[i]+a[i-1]>x){
+//			sum+=a[i]+a[i-1]-x;
+//			a[i]=x-a[i-1];
+//		}
+//	} 
+//	cout<<sum;
+//	return 0;
+// } 
 
-#include<bits/stdc++.h>
-using namespace std;
-int main()
-{
-	long long n,x;
-	cin>>n>>x;
-	long long a[100005];
-	long long sum=0;
-	cin>>a[1];
-	if(a[1]>x){
-		sum+=a[1]-x;
-		a[1]=x;
-	}
-	
-	for(int i=2;i<=n;i++){
-		cin>>a[i];
-		if(a[i]+a[i-1]>x){
-			sum+=a[i]+a[i-1]-x;
-			a[i]=x-a[i-1];
-		}
-	} 
-	cout<<sum;
-	return 0;
- } 
+
+
+
+//E - 删数问题
+
+//#include<bits/stdc++.h>
+//using namespace std;
+////124  142
+////1428
+////142  128
+//
+////175438 
+////15438
+////1438
+////138
+////13
+//
+//int a[300];
+//int main()
+//{
+//	string n;
+//	int k;
+//	int cnt=0;
+//	cin>>n>>k;
+//	int len=n.length();
+//	for(int i=0;i<len;i++){
+//		if(cnt==k)break;
+//		if(n[i]>n[i+1]){
+//			a[i]=1;
+//			//这里8成功被去掉是因为8后面默认是0 
+//			cnt++;
+//		}
+//	}
+//	for(int i=0;i<len;i++){
+//		if(!a[i])cout<<n[i];
+//	} 
+//	return 0;
+// } 
+
+
+
+//#include<bits/stdc++.h>
+//using namespace std;
+//char c[260];
+//int main()
+//{
+//	int len,k;
+//	int i,j; 
+//	scanf("%s %d",c,&k);
+//	len=strlen(c); 
+//	while(k--){
+//		for(i=0;i<=len-2;i++){
+//			if(c[i]>c[i+1]){//因为这里涉及到i+1,所以i<=len-2
+//				for(int j=i;j<=len-2;j++){
+//					c[j]=c[j+1];
+//				}
+//				break;//break只能跳出一层循环 
+//			}
+//		}
+//		len--; //8没有被直接删掉，而是因为当所有数字都递增的时候，直接len--，后面的数字根本不会输出 
+//	}
+//	i=0;
+//	while(i<=len-1&&c[i]=='0')i++;//去除前导零（标记最前面为0的部分） 
+//	if(i==len)printf("0");//整个数组为空 
+//	else{
+//		for(j=i;j<=len-1;j++){
+//			printf("%c",c[j]);
+//		}
+//	}
+//	return 0;
+// } 
+
+
+
+//#include<bits/stdc++.h>
+//using namespace std;
+//int main()
+//{
+//	string n;
+//	int k;
+//	cin>>n>>k;
+//	int len=n.length();
+////	bool flag=false;
+////	int cnt=0;
+////	for(int i=0;i<len;i++){
+////		if(cnt==k)break;
+////		if(n[i]>n[i+1]){
+////			a[i]=1;
+////			cnt++;
+////		}//这样对升序的就不好处理哇 
+////	}
+//
+//	while(k--){
+//		for(int i=0;i<len-1;i++){
+//			if(n[i]>n[i+1]){
+//				for(int j=i;j<len-1;j++){
+//					n[j]=n[j+1];
+//				}
+//				break;
+//			}
+//		}
+//		len--;
+//	}	
+//	int a=0;
+//	while(a<=len-1&&n[a]=='0')a++;
+//	if(a==len)cout<<0;
+//	for(int i=a;i<len;i++){
+//		cout<<n[i];
+//	}
+//	return 0;
+//}
+
+
+
+
+////F - 纪念品分组
+//
+//#include<bits/stdc++.h>
+//using namespace std;
+//struct node
+//{
+//	int s;
+//	bool flag;
+//}a[30005];
+//bool cmp(node x,node y)
+//{
+//	return x.s<y.s;
+//}
+//int main()
+//{
+//	int w,n;
+//	cin>>w>>n;
+//	for(int i=1;i<=n;i++){
+//		cin>>a[i].s;
+//		a[i].flag=true;
+//	}
+//	sort(a+1,a+n+1,cmp);
+//	int cnt=0;
+//	for(int i=n;i>=1;i--){
+//		if(a[i].flag!=false){
+//			//for(int j=i-1;j>=1;j--)
+//			for(int j=1;j<=i-1;j++){
+//				if(a[j].flag!=false){
+//					if(a[i].s+a[j].s<=w){
+//						cnt++;
+//						a[i].flag=false;
+//						a[j].flag=false;
+//						break;
+//					}
+//				}
+//			}
+//		}
+//	}
+//	cout<<n-cnt;//这里学一下呢 
+//	return 0;
+//}
+
+
+
+
+//G - 寄包柜
+
+
+
+
+
+
+
+
+
 
 
 
